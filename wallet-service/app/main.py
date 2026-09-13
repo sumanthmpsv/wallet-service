@@ -16,11 +16,16 @@ from .schemas import CreateWalletRequest, TokenRequest, TransferRequest
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    init_db()
+    # Create tables on startup; don't crash the process if Neon is briefly unreachable
+    try:
+        init_db()
+    except Exception as e:
+        import sys
+        print(f"WARNING: init_db failed on startup: {e}", file=sys.stderr)
     yield
 
 
-app = FastAPI(title="Wallet & P2P Transfer")
+app = FastAPI(title="Wallet & P2P Transfer", lifespan=lifespan)
 
 
 @app.middleware("http")
