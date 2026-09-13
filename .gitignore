@@ -1,7 +1,6 @@
 .neon
 .env.local
 node_modules/
-skills-lock.json
 # Local agent tooling + exercise prompt files: never publish to public repo
 # (the RUBRIC in particular must not be forwarded). Root-scoped so
 # wallet-service/README.md and WRITEUP.md still commit.
