@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: wallet-service
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ALLOW_TEST_FUND
+        value: "0"
