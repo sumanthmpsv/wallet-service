@@ -3,8 +3,8 @@ services:
     name: wallet-service
     runtime: docker
     plan: free
-    dockerfilePath: ./wallet-service/Dockerfile
-    dockerContext: ./wallet-service
+    rootDir: wallet-service
+    dockerfilePath: ./Dockerfile
     healthCheckPath: /health
     envVars:
       - key: DATABASE_URL
